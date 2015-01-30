@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".GameScreen">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:elevation="2dp"
+        android:id="@+id/gridLayout">
+        <Button
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/Azot"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:text="Женя"
+            android:clickable="false"
+            android:enabled="true">
+        </Button>
+        <Button
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/Kate"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:enabled="true"
+            android:text="Катя">
+        </Button>
+        <Button
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Urii"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:enabled="true"
+        android:text="Юра">
+    </Button>
+        <Button
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/Kris"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:enabled="true"
+            android:text="Кристина">
+        </Button>
+        <Button
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/Vera"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:enabled="true"
+            android:text="Вера">
+        </Button>
+        <Button
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/Slava"
+            android:layout_width="110dp"
+            android:enabled="true"
+            android:layout_height="110dp"
+            android:text="Слава">
+        </Button>
+        </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/CommanDescription"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="СТАРТ ИГРЫ"
+        android:id="@+id/StartGameBtn"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/gridLayout"
+        android:layout_alignRight="@+id/gridLayout"
+        android:layout_alignEnd="@+id/gridLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="Re"
+        android:id="@+id/resetBtn"
+        android:layout_above="@+id/StartGameBtn"
+        android:layout_alignRight="@+id/StartGameBtn"
+        android:layout_alignEnd="@+id/StartGameBtn" />
+
+</RelativeLayout>
+<!-- From: file:/E:/AndroidProject/Shlyap/app/src/main/res/layout/activity_game_screen.xml -->

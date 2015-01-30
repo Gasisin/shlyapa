@@ -1,0 +1,5 @@
+E:\AndroidProject\Shlyap\app\build\intermediates\classes\debug
+E:\AndroidProject\Shlyap\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-80cc5eb0c41746e4fbb315aad6b444e26923863d.jar
+E:\AndroidProject\Shlyap\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-18458c0516bf947e024ee60ab13f558cbc8ef1ba.jar
+E:\AndroidProject\Shlyap\app\build\intermediates\pre-dexed\debug\classes-9fe96bafdbabe0c5b7cda2433fd226062c3a1bd6.jar
+E:\AndroidProject\Shlyap\app\build\intermediates\pre-dexed\debug\classes-e54e697ea9a671c818fbe182b5bbb445a833a243.jar

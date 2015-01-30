@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvLayout"
+    android:layout_width="126dp"
+    android:layout_height="126dp"
+    android:text="Участник">
+</Button><!-- From: file:/E:/AndroidProject/Shlyap/app/src/main/res/layout/game_user_btn.xml -->

@@ -24,6 +24,7 @@ import java.util.Iterator;
 public class GameScreen extends ActionBarActivity {
 
     public static TaskManager taskManager;
+    GameManager gameManager;
     TeamManager teamManager;
     MyDBHelper dbHelper;
     TextView text;
@@ -33,8 +34,9 @@ public class GameScreen extends ActionBarActivity {
         setContentView(R.layout.activity_game_screen);
 
         try {
+            gameManager = GameManager.getInstance();
             taskManager = new TaskManager(this.getApplicationContext());
-            teamManager = new TeamManager();
+            teamManager = gameManager.getTeamManager();
             dbHelper = new MyDBHelper(this);
             setStartScreen();
         } catch (IOException e) {
@@ -124,20 +126,7 @@ public class GameScreen extends ActionBarActivity {
 
     private void startGame() {
         if (teamManager.isFullTeam()){
-        setContentView(R.layout.game_screen);
-        MyTimer myTimer = new MyTimer();
-
-        Handler handler = new Handler(){
-            public void handleMessage(android.os.Message msg) {
-                // обновляем TextView
-                Log.d("MyTag", "Handler mes - "+msg.what);
-                TextView timer = (TextView) findViewById(R.id.timer);
-                timer.setText(String.valueOf(msg.what));
-            };
-        };
-        myTimer.setHandler(handler);
-        myTimer.start();
-        Log.d("MyTag", "GameStart");}
+        }
     else{
             Context context = getApplicationContext();
             CharSequence text = "Неверное колличество игроков в командах";
@@ -152,11 +141,30 @@ public class GameScreen extends ActionBarActivity {
         view.setClickable(false);
     }
 
+    private void choiseWhoFirst(){
+        setContentView(R.layout.who_first_screen);
+    }
     private void setButtonActive(View view){
         view.setEnabled(true);
         view.setClickable(true);
     }
 
+    private void startGuestWord(){
+        setContentView(R.layout.game_screen);
+        MyTimer myTimer = new MyTimer();
+
+        Handler handler = new Handler(){
+            public void handleMessage(android.os.Message msg) {
+                // обновляем TextView
+                Log.d("MyTag", "Handler mes - "+msg.what);
+                TextView timer = (TextView) findViewById(R.id.timer);
+                timer.setText(String.valueOf(msg.what));
+            };
+        };
+        myTimer.setHandler(handler);
+        myTimer.start();
+        Log.d("MyTag", "GameStart");
+    }
     private void setTextAboutCommand(){
         int _count = 0;
         LinearLayout llMain = (LinearLayout) findViewById(R.id.CommanDescription);
