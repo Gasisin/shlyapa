@@ -29,6 +29,15 @@ public class Team{
         return false;
     }
 
+    public boolean isFullTeam(){
+        for (int i=0; i<USER_IN_TEAM_COUNT; i++){
+            if (users[i] == null){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void setCommandTasks(){
 
     }

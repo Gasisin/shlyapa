@@ -16,6 +16,8 @@ public class GameManager {
     public final static int FIRST_SELECT = 2;
     public final static int GAME_STAGE = 3;
 
+    private int _currentStage = 0;
+
     public static GameManager getInstance()
     {
         if (instance == null)
@@ -36,14 +38,13 @@ public class GameManager {
     public int getGameState(){
         return _state;
     }
-
     public Team getCurrentTeam(){
-        _teamCount = teamManager.getAddedUserCount()/2;
-        return new Team();//заглушка
+            return teamManager.getTeamInGame().get(_currentStage%2);
     }
     public void setGameState(int state){
         _state = state;
     }
+
 
 
 }

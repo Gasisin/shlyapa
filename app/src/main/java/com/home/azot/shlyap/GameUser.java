@@ -9,6 +9,9 @@ public class GameUser{
     private int _imageId;
     private int _userId;
 
+    private final int NOT_ANSWER = 1;
+    private final int ANSWER = 2;
+
     public GameUser(String userName, int imageId, int userId){
         _userName = userName;
         _imageId = imageId;

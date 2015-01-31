@@ -14,6 +14,8 @@ public class TeamManager{
     private int _addedUserCount = 0;
     private ArrayList<GameUser> _addedUser = new ArrayList<>();
 
+    private ArrayList<Team> _teamInGame = new ArrayList<>();
+
     private int MAX_TEAM_COUNT = 3;
 
     public TeamManager(){
@@ -84,6 +86,17 @@ public class TeamManager{
             }
         }
         return null;
+    }
+
+    public ArrayList<Team> getTeamInGame(){
+    if (_teamInGame.size()==0) {
+        for (int i = 0; i < MAX_TEAM_COUNT; i++) {
+            if (_teams[i].isFullTeam()) {
+                _teamInGame.add(_teams[i]);
+            }
+        }
+    }
+    return _teamInGame;
     }
 
 
