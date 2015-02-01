@@ -7,6 +7,10 @@ public class Team{
     private GameUser[] users;
     private int USER_IN_TEAM_COUNT = 2;
     private int TASK_IN_TEAM_COUNT = 2;
+
+    public final static int FIRST_USER = 1;
+    public final static int SECOND_USER = 2;
+
     private CommandTask[] _tasks;
 
     public Team(){
@@ -29,6 +33,9 @@ public class Team{
         return false;
     }
 
+    public GameUser getGameUser(int index){
+        return users[index-1];
+    }
     public boolean isFullTeam(){
         for (int i=0; i<USER_IN_TEAM_COUNT; i++){
             if (users[i] == null){

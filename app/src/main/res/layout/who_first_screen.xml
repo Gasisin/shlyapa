@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="Кто отвечает первым?"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
@@ -19,8 +19,8 @@
         android:text="New Button"
         android:id="@+id/first"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView" />
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,6 +28,15 @@
         android:text="New Button"
         android:id="@+id/second"
         android:layout_alignTop="@+id/first"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Старт"
+        android:id="@+id/chekedwhofirstbtn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="63dp" />
 </RelativeLayout>

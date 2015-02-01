@@ -34,8 +34,8 @@ public class GameScreen extends ActionBarActivity {
         setContentView(R.layout.activity_game_screen);
 
         try {
-            gameManager = GameManager.getInstance();
             taskManager = new TaskManager(this.getApplicationContext());
+            gameManager = GameManager.getInstance();
             teamManager = gameManager.getTeamManager();
             dbHelper = new MyDBHelper(this);
             setStartScreen();
@@ -126,6 +126,7 @@ public class GameScreen extends ActionBarActivity {
 
     private void startGame() {
         if (teamManager.isFullTeam()){
+            choiseWhoFirst();
         }
     else{
             Context context = getApplicationContext();
@@ -139,10 +140,47 @@ public class GameScreen extends ActionBarActivity {
     private void setButtonInactive(View view){
         view.setEnabled(false);
         view.setClickable(false);
+
+
     }
 
     private void choiseWhoFirst(){
         setContentView(R.layout.who_first_screen);
+
+        Team currentTeam  = gameManager.getCurrentTeam();
+
+        Button firstBtn = (Button) findViewById(R.id.first);
+        Button secondBtn = (Button) findViewById(R.id.second);
+
+        firstBtn.setText(String.valueOf(currentTeam.getGameUser(Team.FIRST_USER).getUserName()));
+        secondBtn.setText(String.valueOf(currentTeam.getGameUser(Team.SECOND_USER).getUserName()));
+
+        View.OnClickListener choseFirstn = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.first:
+                        gameManager.setCurrentUser(gameManager.getCurrentTeam().getGameUser(Team.FIRST_USER));
+                        setButtonActive(findViewById(R.id.second));
+                        break;
+                    case R.id.second:
+                        gameManager.setCurrentUser(gameManager.getCurrentTeam().getGameUser(Team.SECOND_USER));
+                        setButtonActive(findViewById(R.id.first));
+                        break;
+                }
+                setButtonInactive(v);
+            }
+        };
+        firstBtn.setOnClickListener(choseFirstn);
+        secondBtn.setOnClickListener(choseFirstn);
+
+        Button startBtn = (Button) findViewById(R.id.chekedwhofirstbtn);
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startGuestWord();
+            }
+        });
     }
     private void setButtonActive(View view){
         view.setEnabled(true);

@@ -11,6 +11,8 @@ public class GameManager {
 
     private int _teamCount = 0;
 
+    private GameUser _currentUser = null;
+
 
     public final static int TEAM_SELECT = 1;
     public final static int FIRST_SELECT = 2;
@@ -40,6 +42,10 @@ public class GameManager {
     }
     public Team getCurrentTeam(){
             return teamManager.getTeamInGame().get(_currentStage%2);
+    }
+
+    public void setCurrentUser(GameUser currentUser){
+        _currentUser = currentUser;
     }
     public void setGameState(int state){
         _state = state;
