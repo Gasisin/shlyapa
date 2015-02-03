@@ -32,6 +32,11 @@ public class TaskWord {
         return false;
     }
 
+    public boolean isMissed(){
+        if (_state==MISSED){return true;}
+        return false;
+    }
+
     public int getTime(){
         return _timer.getTime();
     }
