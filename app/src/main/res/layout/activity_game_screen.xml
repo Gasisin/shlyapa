@@ -1,19 +1,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".GameScreen">
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".GameScreen">
 
     <GridLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:columnCount="3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:elevation="2dp"
-        android:id="@+id/gridLayout">
+        android:id="@+id/gridLayout"
+        android:background="@color/icons">
         <Button
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/Azot"
@@ -97,5 +96,26 @@
         android:layout_above="@+id/StartGameBtn"
         android:layout_alignRight="@+id/StartGameBtn"
         android:layout_alignEnd="@+id/StartGameBtn" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/resetBtn"
+        android:id="@+id/fwq"></LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignTop="@+id/resetBtn"
+        android:layout_alignLeft="@+id/StartGameBtn"
+        android:layout_alignStart="@+id/StartGameBtn"
+        android:layout_above="@+id/gridLayout"
+        android:background="@color/primary"></LinearLayout>
 
 </RelativeLayout>
