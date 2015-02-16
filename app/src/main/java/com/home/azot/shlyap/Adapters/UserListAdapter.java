@@ -1,10 +1,15 @@
-package com.home.azot.shlyap;
+package com.home.azot.shlyap.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.home.azot.shlyap.GameUser;
+import com.home.azot.shlyap.Helpers.StaticHolder;
+import com.home.azot.shlyap.R;
 
 import java.util.ArrayList;
 
@@ -21,6 +26,15 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         public ViewHolder(View v) {
             super(v);
             userName = (TextView) v.findViewById(R.id.user_name_in_row);
+           v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    View newc = (View)v.getParent();
+                    CheckBox cb = (CheckBox) v.findViewById(R.id.theme_switch);
+                    cb.setChecked(!cb.isChecked());
+                    StaticHolder.userSelectActivityInstance.removeItem(v);
+                }
+            });
         }
     }
 
@@ -39,8 +53,15 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+
         holder.userName.setText(mDataset.get(position).getUserName());
+//        holder.userName.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                StaticHolder.userSelectActivityInstance.removeItem(holder);
+//            }
+//        });
     }
 
     @Override
