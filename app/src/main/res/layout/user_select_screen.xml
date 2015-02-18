@@ -3,12 +3,59 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
+    <LinearLayout
+        android:id="@+id/fab_button"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:background="@drawable/ripple_round"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:scaleX="0"
+        android:scaleY="0"
+        android:gravity="center"
+        android:stateListAnimator="@anim/fab_anim"
+        android:elevation="5dp"
+        android:layout_below="@+id/holder_view"
+        android:layout_marginTop="-26dp"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:clickable="true">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/ic_play_arrow_white_48dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/dialer_toolbar"
         android:layout_width="match_parent"
         android:background="?android:colorPrimary"
-        android:layout_height="?attr/actionBarSize"
-        />
+        android:orientation="horizontal"
+        android:paddingRight="16dp"
+        android:layout_height="@dimen/action_bar_size"
+        android:gravity="center_vertical|right">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addUser"
+            android:src="@drawable/ic_queue_white_48dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:id="@+id/repeat"
+            android:src="@drawable/ic_repeat_white_48dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3" />
 
     <LinearLayout
         android:id="@+id/holder_view"
@@ -22,55 +69,6 @@
         android:background="?android:colorPrimary"
         android:paddingBottom="16dp"
         >
-
-        <TextView
-            android:id="@+id/title_command"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
-            android:textSize="26sp"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="?android:colorAccent"
-            android:text="Команда 1"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Awesome"
-            android:layout_marginLeft="72dp"
-            android:textColor="?android:colorAccent"
-            android:layout_gravity="center_vertical"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Awesome"
-            android:layout_marginLeft="72dp"
-            android:textColor="?android:colorAccent"
-            android:layout_gravity="center_vertical"/>
-        <TextView
-            android:id="@+id/title_command2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
-            android:textSize="26sp"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="?android:colorAccent"
-            android:text="Команда 1"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Awesome"
-            android:layout_marginLeft="72dp"
-            android:textColor="?android:colorAccent"
-            android:layout_gravity="center_vertical"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Awesome"
-            android:layout_marginLeft="72dp"
-            android:textColor="?android:colorAccent"
-            android:layout_gravity="center_vertical"/>
 
     </LinearLayout>
 
@@ -90,6 +88,6 @@
             android:layout_height="match_parent"/>
 
 
-        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

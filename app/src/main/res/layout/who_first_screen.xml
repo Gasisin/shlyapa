@@ -3,40 +3,92 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Кто отвечает первым?"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/first"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/second"
-        android:layout_alignTop="@+id/first"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Старт"
-        android:id="@+id/chekedwhofirstbtn"
+    <LinearLayout
+        android:id="@+id/fab_button"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:background="@drawable/ripple_round"
+        android:layout_marginBottom ="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:stateListAnimator="@anim/fab_anim"
+        android:elevation="5dp"
+        android:layout_marginTop="-26dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="63dp" />
+        android:orientation="horizontal"
+        android:clickable="true">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/ic_play_arrow_white_48dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialer_toolbar"
+        android:layout_width="match_parent"
+        android:background="?android:colorPrimary"
+        android:orientation="horizontal"
+        android:paddingRight="16dp"
+        android:layout_height="@dimen/action_bar_size"
+        android:gravity="center_vertical|right">
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3" />
+
+    <LinearLayout
+        android:id="@+id/holder_view"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:transitionName="holder1"
+        android:layout_below="@id/dialer_toolbar"
+        android:background="?android:colorPrimary"
+        android:paddingBottom="16dp"
+        >
+
+        <TextView
+            android:id="@+id/title_command"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:textSize="26sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/icons"
+            android:text="Кто отвечает первым?"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:layout_below="@+id/holder_view"
+        android:layout_centerHorizontal="true">
+
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/user1_radio"
+        layout="@layout/user_radio_raw"/>
+    <include
+        android:id="@+id/user2_radio"
+        layout="@layout/user_radio_raw"/>
+    </RadioGroup>
+    </LinearLayout>
+
 </RelativeLayout>

@@ -56,6 +56,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         holder.userName.setText(mDataset.get(position).getUserName());
+        holder.userName.setTag(mDataset.get(position).getUserId());
 //        holder.userName.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
