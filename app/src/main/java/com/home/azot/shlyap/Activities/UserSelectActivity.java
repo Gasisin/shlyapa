@@ -38,9 +38,6 @@ import java.util.ArrayList;
  */
 public class UserSelectActivity extends ActionBarActivity {
 
-    public static TaskManager taskManager;
-    GameManager gameManager;
-    TeamManager teamManager;
     MyDBHelper dbHelper;
     MyTimer myTimer;
     TextView text;
@@ -48,6 +45,7 @@ public class UserSelectActivity extends ActionBarActivity {
     UserListAdapter mAdapter;
     ArrayList<GameUser> gameUsers;
     RecyclerView allUsersRecycleView;
+    ActivityOptions transitionActivityOptions;
 
 
 
@@ -56,9 +54,9 @@ public class UserSelectActivity extends ActionBarActivity {
         setContentView(R.layout.user_select_screen);
         StaticHolder.userSelectActivityInstance = this;
         try{
-            taskManager = new TaskManager(this.getApplicationContext());
-            gameManager = GameManager.getInstance();
-            teamManager = gameManager.getTeamManager();
+            StaticHolder.taskManager = new TaskManager(this.getApplicationContext());
+            StaticHolder.gameManager = GameManager.getInstance();
+            StaticHolder.teamManager = StaticHolder.gameManager.getTeamManager();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,15 +72,20 @@ public class UserSelectActivity extends ActionBarActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                configurTransOption();
                 Intent i  = new Intent (UserSelectActivity.this, WhoFirstActivity.class);
-
-                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(UserSelectActivity.this,
-                        Pair.create(startBtn, "fab"));
-
                 startActivity(i, transitionActivityOptions.toBundle());
             }
         });
         GUIHelper.configureFab(startBtn);
+    }
+
+    private void configurTransOption() {
+        LinearLayout holder = (LinearLayout) findViewById(R.id.holder_view);
+        View userTwo = holder.findViewWithTag("First").findViewById(R.id.user_one);
+        View userOne = holder.findViewWithTag("First").findViewById(R.id.user_two);
+        transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(UserSelectActivity.this,
+                Pair.create(startBtn, "fab"), Pair.create(userTwo, "userTwo"), Pair.create(userOne, "userOne"));
     }
 
     private void resetBtnSet() {
@@ -105,7 +108,7 @@ public class UserSelectActivity extends ActionBarActivity {
         RecyclerView.ItemAnimator animator = new DefaultItemAnimator();
         animator.setRemoveDuration(1000);
         allUsersRecycleView.setItemAnimator(animator);
-        gameUsers = new ArrayList<>(teamManager.getTotalUsers());
+        gameUsers = new ArrayList<>(StaticHolder.teamManager.getTotalUsers());
         Log.d("MyTag", String.valueOf(gameUsers.size()));
         mAdapter = new UserListAdapter(gameUsers);
         allUsersRecycleView.setAdapter(mAdapter);
@@ -118,7 +121,7 @@ public class UserSelectActivity extends ActionBarActivity {
         gameUsers.remove(position);
         mAdapter.notifyItemRemoved(position);
 
-        teamManager.addUserInTeam(teamManager.getUserById((int)tv.getTag()));
+        StaticHolder.teamManager.addUserInTeam(StaticHolder.teamManager.getUserById((int)tv.getTag()));
 
         showAddedUser();
 
@@ -126,7 +129,7 @@ public class UserSelectActivity extends ActionBarActivity {
     }
 
     private void checkCanStart() {
-        if(teamManager.isFullTeam()){
+        if(StaticHolder.teamManager.isFullTeam()){
             View startBtn = findViewById(R.id.fab_button);
             startBtn.animate().setStartDelay(300)
                     .scaleX(1).scaleY(1);
@@ -144,15 +147,15 @@ public class UserSelectActivity extends ActionBarActivity {
         ObjectAnimator objectAnimator = ObjectAnimator.ofInt(linMain, "minimumHeight", 0);
         objectAnimator.setDuration(700);
         objectAnimator.start();
-        teamManager.resetTeam();
+        StaticHolder.teamManager.resetTeam();
 
         recyclerSet();
         checkCanStart();
     }
     private void showAddedUser() {
-        if (teamManager.getAddedUserCount()%2==1) {
+        if (StaticHolder.teamManager.getAddedUserCount()%2==1) {
             final View linl = findViewById(R.id.holder_view);
-            int minSize = 250 * (teamManager.getAddedUserCount()/2+1);
+            int minSize = 250 * (StaticHolder.teamManager.getAddedUserCount()/2+1);
             ObjectAnimator objectAnimator = ObjectAnimator.ofInt(linl, "minimumHeight", minSize);
             objectAnimator.setDuration(700);
             objectAnimator.start();
@@ -176,13 +179,14 @@ public class UserSelectActivity extends ActionBarActivity {
                     LinearLayout ll = (LinearLayout) linl;
                     View clearTag = ll.findViewWithTag("lastAdded");
                     if (clearTag!=null) clearTag.setTag("");
+                    if (clearTag!=null&&(StaticHolder.teamManager.getAddedUserCount()/2)==1)clearTag.setTag("First");
                     viewForAdd.setTag("lastAdded");
                     ll.addView(viewForAdd);
                     viewForAdd.startAnimation(animation1);
                     TextView commandTitle = (TextView) viewForAdd.findViewById(R.id.title_command);
-                    commandTitle.setText("Комманда №"+String.valueOf(teamManager.getAddedUserCount()/2+1));
+                    commandTitle.setText("Комманда №"+String.valueOf(StaticHolder.teamManager.getAddedUserCount()/2+1));
                     TextView user1Title = (TextView) viewForAdd.findViewById(R.id.user_one);
-                    user1Title.setText(teamManager.getLastAddedUser().getUserName());
+                    user1Title.setText(StaticHolder.teamManager.getLastAddedUser().getUserName());
                 }
 
                 @Override
@@ -198,7 +202,7 @@ public class UserSelectActivity extends ActionBarActivity {
             animation2.setDuration(1000);
             TextView userTwo = (TextView) holder.findViewWithTag("lastAdded").findViewById(R.id.user_two);
             userTwo.startAnimation(animation2);
-            userTwo.setText(teamManager.getLastAddedUser().getUserName());}
+            userTwo.setText(StaticHolder.teamManager.getLastAddedUser().getUserName());}
     }
 
 
