@@ -42,13 +42,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/addUser"
-            android:src="@drawable/ic_queue_white_48dp" />
+            android:src="@drawable/ic_queue_white_36dp" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:id="@+id/repeat"
-            android:src="@drawable/ic_repeat_white_48dp" />
+            android:src="@drawable/ic_repeat_white_36dp" />
 
     </LinearLayout>
 

@@ -17,7 +17,7 @@ public class GUIHelper {
 
         Fade ex = new Fade();
         ex.setInterpolator(new PathInterpolator(0.4f, 0, 1, 1));
-        ex.setDuration(5000);
+        ex.setDuration(500);
         w.setExitTransition(ex);
         w.setEnterTransition(ex);
     }

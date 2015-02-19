@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView2"
             android:src="@drawable/ic_play_arrow_white_48dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -79,9 +80,6 @@
         android:layout_below="@+id/holder_view2"
         android:layout_centerHorizontal="true">
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <include
                 android:id="@+id/user1_radio"
@@ -91,7 +89,6 @@
                 android:id="@+id/user2_radio"
                 layout="@layout/user_radio_raw"
                 android:transitionName="userTwo"/>
-        </RadioGroup>
     </LinearLayout>
 
 </RelativeLayout>
