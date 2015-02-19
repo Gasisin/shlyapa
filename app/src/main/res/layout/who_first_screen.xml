@@ -16,6 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
+        android:transitionName="fab"
         android:clickable="true">
 
 
@@ -44,7 +45,7 @@
         android:id="@+id/imageView3" />
 
     <LinearLayout
-        android:id="@+id/holder_view"
+        android:id="@+id/holder_view2"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,20 +76,22 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp"
-        android:layout_below="@+id/holder_view"
+        android:layout_below="@+id/holder_view2"
         android:layout_centerHorizontal="true">
 
-<RadioGroup
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/user1_radio"
-        layout="@layout/user_radio_raw"/>
-    <include
-        android:id="@+id/user2_radio"
-        layout="@layout/user_radio_raw"/>
-    </RadioGroup>
+            <include
+                android:id="@+id/user1_radio"
+                layout="@layout/user_radio_raw"
+                android:transitionName="userOne"/>
+            <include
+                android:id="@+id/user2_radio"
+                layout="@layout/user_radio_raw"
+                android:transitionName="userTwo"/>
+        </RadioGroup>
     </LinearLayout>
 
 </RelativeLayout>

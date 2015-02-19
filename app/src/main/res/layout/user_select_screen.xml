@@ -78,7 +78,7 @@
         android:layout_height="fill_parent"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:layout_below="@+id/holder_view"
+        android:layout_below="@id/holder_view"
         android:layout_centerHorizontal="true">
 
         <android.support.v7.widget.RecyclerView
