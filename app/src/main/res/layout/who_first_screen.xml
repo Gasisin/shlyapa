@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/fab_button"
+        android:id="@+id/startGameButton"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"
         android:background="@drawable/ripple_round"

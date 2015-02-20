@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/fab_button"
+        android:id="@+id/guessed_btn"
         android:layout_width="@dimen/guesed_size"
         android:layout_height="@dimen/guesed_size"
         android:background="@drawable/ripple_round"
@@ -14,7 +14,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:transitionName="fab"
+        android:transitionName="guessedAnim"
         android:clickable="true"
         android:layout_toRightOf="@+id/some"
         android:layout_marginLeft="-130dp"
@@ -28,6 +28,7 @@
             android:src="@drawable/ic_play_arrow_white_48dp" />
 
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/dialer_toolbar"
@@ -58,41 +59,31 @@
         android:background="?android:colorPrimary"
         android:paddingBottom="16dp"
         >
-        <TextView
-            android:id="@+id/timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
-            android:layout_marginBottom="32dp"
-            android:textSize="84sp"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="@color/icons"
-            android:text="60"
-            />
+
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center_vertical|right"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/word"
+                android:id="@+id/timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:textSize="52sp"
+                android:textSize="100sp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="left"
                 android:fontFamily="sans-serif-medium"
                 android:textColor="@color/icons"
-                android:text="Пукан" />
+                android:text="0" />
 
             <ImageView
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:id="@+id/addUser"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/missed"
                 android:src="@drawable/ic_import_export_white_36dp" />
 
         </LinearLayout>
@@ -109,7 +100,17 @@
         android:layout_below="@+id/holder_view2"
         android:layout_centerHorizontal="true">
 
-
+        <TextView
+            android:id="@+id/word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textSize="36sp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:fontFamily="sans-serif-medium"
+            android:text="Пукан" />
     </LinearLayout>
 
 </RelativeLayout>
