@@ -9,6 +9,9 @@ import java.util.Iterator;
 public class CommandTask {
     private ArrayList<TaskWord> _taskArray;
 
+    private int _totalTime = 0;
+    private TaskWord missedWord = new TaskWord("");
+
     public CommandTask(ArrayList<TaskWord> taskArray){
         _taskArray = taskArray;
     }
@@ -17,6 +20,7 @@ public class CommandTask {
     }
 
     public TaskWord getNextWord(){
+        int missedCount = 0;
         Iterator<TaskWord> itr = _taskArray.iterator();
         while(itr.hasNext()){
             TaskWord tw = itr.next();
@@ -24,14 +28,30 @@ public class CommandTask {
                 return tw;
             }
         }
+        Iterator<TaskWord> itrMissedForCount = _taskArray.iterator();  //TODO продумать проход по повторным словам
+        while(itrMissedForCount.hasNext()) {
+            TaskWord tw = itrMissedForCount.next();
+            if (tw.isMissed()) {
+                missedCount++;
+            }
+        }
         Iterator<TaskWord> itrMissed = _taskArray.iterator();
         while(itrMissed.hasNext()) {
             TaskWord tw = itrMissed.next();
-            if (tw.isMissed()) {
+            if ((tw.isMissed()&&missedCount==1)||tw.isMissed()&&tw!=missedWord) {
+                missedWord = tw;
                 return tw;
             }
         }
            return null;
+    }
+
+    public void setTotalTime(int totalTime){
+        _totalTime = totalTime;
+    }
+
+    public int getTotalTime(){
+        return _totalTime;
     }
 
     public ArrayList<TaskWord> getCommandTask(){
