@@ -1,8 +1,12 @@
 package com.home.azot.shlyap.Activities;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Pair;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -64,5 +68,15 @@ public class WhoFirstActivity extends ActionBarActivity {
         };
         firstBtn.setOnClickListener(choseFirstn);
         secondBtn.setOnClickListener(choseFirstn);
+
+        findViewById(R.id.startGameButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(WhoFirstActivity.this,
+                        Pair.create(v, "guessedAnim"));
+                Intent i  = new Intent (WhoFirstActivity.this, GameActivity.class);
+                startActivity(i, transitionActivityOptions.toBundle());
+            }
+        });
     }
 }
